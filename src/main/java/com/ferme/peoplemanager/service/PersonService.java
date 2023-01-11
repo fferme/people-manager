@@ -2,7 +2,7 @@ package com.ferme.peoplemanager.service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
+
 
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
@@ -27,7 +27,7 @@ public class PersonService {
         return personRepository.findAll();
     }
 
-    public Optional<Person> findById(@PathVariable @NotNull UUID id) {
+    public Optional<Person> findById(@PathVariable @NotNull Long id) {
         return personRepository.findById(id);
     }
 
@@ -35,7 +35,7 @@ public class PersonService {
         return personRepository.save(client);
     }
 
-    public Optional<Person> update(@NotNull UUID id, @Valid Person newPerson) {
+    public Optional<Person> update(@NotNull Long id, @Valid Person newPerson) {
         return personRepository.findById(id)
                 .map(personFound -> {
                     personFound.setName(newPerson.getName());
@@ -44,7 +44,7 @@ public class PersonService {
                 });
     }
 
-    public boolean delete(@PathVariable @NotNull UUID id) {
+    public boolean delete(@PathVariable @NotNull Long id) {
         return personRepository.findById(id)
             .map(recordFound -> {
                 personRepository.deleteById(id);

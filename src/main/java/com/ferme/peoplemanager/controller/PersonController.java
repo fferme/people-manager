@@ -1,7 +1,6 @@
 package com.ferme.peoplemanager.controller;
 
 import java.util.List;
-import java.util.UUID;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -37,7 +36,7 @@ public class PersonController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Person> findById(@PathVariable @NotNull UUID id) {
+    public ResponseEntity<Person> findById(@PathVariable @NotNull Long id) {
         return personService.findById(id)
             .map(clientFound -> ResponseEntity.ok().body(clientFound))
             .orElse(ResponseEntity.notFound().build());
@@ -50,7 +49,7 @@ public class PersonController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Person> update(@PathVariable @NotNull UUID id, 
+    public ResponseEntity<Person> update(@PathVariable @NotNull Long id, 
         @RequestBody @Valid Person newPerson) {
         return personService.update(id, newPerson)
             .map(recordFound -> ResponseEntity.ok().body(recordFound))
@@ -58,11 +57,10 @@ public class PersonController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable UUID id) {
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
         if (personService.delete(id)) {
             return ResponseEntity.noContent().<Void>build();
         }
         return ResponseEntity.notFound().build();
     }
-
 }

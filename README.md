@@ -1,3 +1,7 @@
-# [Abrir Readme em Português-BR](readmes/Readme-PT.md "Open")
+# Português
+## [Abrir Readme](readmes/Readme-PT.md "Open")
+## [Abrir evidências de testes](tests/test-evidences/english/Test-Evidences.md)
 
-# [Open Readme in English](readmes/Readme-EN.md "Open")
+# English
+## [Open Readme](readmes/Readme-EN.md "Open")
+## [Open test evidences](tests/test-evidences/portugues/evidencias-de-teste.md)

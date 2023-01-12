@@ -39,7 +39,7 @@ public class PersonService {
         return personRepository.findById(id)
                 .map(personFound -> {
                     personFound.setName(newPerson.getName());
-                    personFound.setBirthDate(null);
+                    personFound.setBirthDate(newPerson.getBirthDate());
                     return personRepository.save(personFound);
                 });
     }

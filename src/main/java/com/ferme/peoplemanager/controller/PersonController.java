@@ -38,7 +38,7 @@ public class PersonController {
     @GetMapping("/{id}")
     public ResponseEntity<Person> findById(@PathVariable @NotNull Long id) {
         return personService.findById(id)
-            .map(clientFound -> ResponseEntity.ok().body(clientFound))
+            .map(personFound -> ResponseEntity.ok().body(personFound))
             .orElse(ResponseEntity.notFound().build());
     }
 

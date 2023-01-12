@@ -5,11 +5,15 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.Past;
 
 import java.time.LocalDate;
+import java.util.Set;
 
 import org.hibernate.validator.constraints.Length;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
 
@@ -28,4 +32,8 @@ public class Person {
     @Past
     @Column(columnDefinition = "DATE")
     private LocalDate birthDate;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "person")
+    private Set<Address> adresses;
 }

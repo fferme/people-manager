@@ -17,9 +17,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ferme.peoplemanager.model.Address;
-import com.ferme.peoplemanager.model.Person;
 import com.ferme.peoplemanager.service.AddressService;
-import com.ferme.peoplemanager.service.PersonService;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
@@ -27,45 +25,40 @@ import lombok.AllArgsConstructor;
 
 @Validated
 @RestController
-@RequestMapping("/api/person")
+@RequestMapping("/api/address")
 @AllArgsConstructor
-public class PersonController {
-    private final PersonService personService;
+public class AddressController {
+    private final AddressService addressService;
 
     @GetMapping
-    public @ResponseBody List<Person> listAll() {
-        return personService.listAll();
+    public @ResponseBody List<Address> listAll() {
+        return addressService.listAll();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Person> findById(@PathVariable @NotNull Long id) {
-        return personService.findById(id)
+    public ResponseEntity<Address> findById(@PathVariable @NotNull Long id) {
+        return addressService.findById(id)
             .map(personFound -> ResponseEntity.ok().body(personFound))
             .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
-    public Person create(@RequestBody @Valid Person person) {
-        return personService.create(person);
+    public Address create(@RequestBody @Valid Address person) {
+        return addressService.create(person);
     }
 
-    @GetMapping("/{id}/addresses")
-    public ResponseEntity<Address> getPersonAddresses(@PathVariable @NotNull Long id) {
-        return null;
-    }
-    
     @PutMapping("/{id}")
-    public ResponseEntity<Person> update(@PathVariable @NotNull Long id, 
-        @RequestBody @Valid Person newPerson) {
-        return personService.update(id, newPerson)
+    public ResponseEntity<Address> update(@PathVariable @NotNull Long id, 
+        @RequestBody @Valid Address newaddress) {
+        return addressService.update(id, newaddress)
             .map(recordFound -> ResponseEntity.ok().body(recordFound))
             .orElse(ResponseEntity.notFound().build());
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
-        if (personService.delete(id)) {
+        if (addressService.delete(id)) {
             return ResponseEntity.noContent().<Void>build();
         }
         return ResponseEntity.notFound().build();

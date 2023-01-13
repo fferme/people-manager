@@ -1,7 +1,5 @@
 package com.ferme.peoplemanager.service;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -63,7 +61,7 @@ public class PersonService {
         }
         
         return person.getAddresses().stream()
-            .filter(address -> address.getPrincipal())
+            .filter(Address::getPrincipal)
             .findFirst()
             .orElse(null);
     }

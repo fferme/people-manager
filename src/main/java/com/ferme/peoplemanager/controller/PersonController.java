@@ -1,7 +1,5 @@
 package com.ferme.peoplemanager.controller;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;

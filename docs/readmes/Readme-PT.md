@@ -39,16 +39,16 @@ Todos os testes integrados estão localizados em: [Test-Evidences](https://githu
 
 As rotas da API podem ser testadas usando ferramentas como o Postman. As rotas disponíveis incluem:
 
-* GET `/person`: lista todas as pessoas registradas
-* GET `/person/{id}`: consulta uma pessoa pelo seu ID
-* POST `/person`: cria uma nova pessoa
-* PUT `/person/{id}`: atualiza uma pessoa existente
-* DELETE `/person/{id}`: remove uma pessoa existente
-* GET `/person/{id}/addresses`: lista todos os endereços de uma pessoa
-* POST `/person/{id}/addresses`: cria um novo endereço para uma pessoa
-* PUT `/person/{id}/addresses/{addressId}`: atualiza um endereço existente de uma pessoa
-* DELETE `/person/{id}/addresses/{addressId}`: remove um endereço existente de uma pessoa
-* PUT `/person/{id}/addresses/{addressId}/main`: define um endereço como o endereço principal de uma pessoa
+* GET `api/person`: lista todas as pessoas registradas
+* GET `api/person/{id}`: consulta uma pessoa pelo seu ID
+* POST `api/person`: cria uma nova pessoa
+* PUT `api/person/{id}`: atualiza uma pessoa existente
+* DELETE `api/person/{id}`: remove uma pessoa existente
+* GET `api/person/{id}/addresses`: lista todos os endereços de uma pessoa
+* POST `api/person/{id}/addresses`: cria um novo endereço para uma pessoa
+* PUT `api/person/{id}/addresses/{addressId}`: atualiza um endereço existente de uma pessoa
+* DELETE `api/person/{id}/addresses/{addressId}`: remove um endereço existente de uma pessoa
+* PUT `api/person/{id}/addresses/{addressId}/main`: define um endereço como o endereço principal de uma pessoa
 
 ## Testes Unitários
 

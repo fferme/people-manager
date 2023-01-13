@@ -1,5 +1,7 @@
 package com.ferme.peoplemanager.service;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -33,9 +35,7 @@ public class AddressService {
 
     public List<Address> listAddressesByPerson(Long id) {
         Person person = personRepository.findById(id).orElse(null);
-        List<Address> addresses = addressRepository.findByPerson(person);
-
-        return addresses;
+        return addressRepository.findByPerson(person);
     }
 
     public Optional<Address> findById(@PathVariable @NotNull Long id) {

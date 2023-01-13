@@ -7,7 +7,7 @@
   ![1673474119224](image/Test-Evidences/1673474119224.png)
 
   ![1673474128917](image/Test-Evidences/1673474128917.png)
-- Entidade criada mostrada no banco de dados H2
+- Entidades criadas mostradas no banco de dados H2
 
   ![1673474457763](image/Test-Evidences/1673474457763.png)
 
@@ -66,3 +66,13 @@
 - Usando requisição HTTP GET `(/api/person/{id}/addresses)` para recuperar todos endereços dessa pessoa
 
   ![1673582093454](image/Test-Evidences/1673582093454.png)
+
+  ---
+
+  ## Recuperando endereço principal de uma pessoa
+- Usando requisição HTTP GET `(/api/person/{id})` para recuperar dados de uma pessoa
+
+  ![1673623489603](image/evidencias-de-teste/1673623489603.png)
+- Usando requisição HTTP GET `(/api/person/{id}/addresses/main)` para recuperar endereço principal da pessoa
+
+  ![1673623551253](image/evidencias-de-teste/1673623551253.png)

@@ -1,5 +1,7 @@
 package com.ferme.peoplemanager.service;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -8,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import com.ferme.peoplemanager.model.Address;
 import com.ferme.peoplemanager.model.Person;
 import com.ferme.peoplemanager.repository.PersonRepository;
 
@@ -51,6 +54,18 @@ public class PersonService {
                 return true;
             })
             .orElse(false);
+    }
+    
+    public Address getPrincipalAddress(@NotNull Long id) {
+        Person person = personRepository.findById(id).orElse(null);
+        if (person == null) {
+            return null;
+        }
+        
+        return person.getAddresses().stream()
+            .filter(address -> address.getPrincipal())
+            .findFirst()
+            .orElse(null);
     }
     
 }

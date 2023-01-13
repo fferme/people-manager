@@ -10,6 +10,7 @@ import jakarta.validation.constraints.Past;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import org.hibernate.validator.constraints.Length;

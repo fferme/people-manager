@@ -1,5 +1,7 @@
 package com.ferme.peoplemanager.controller;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
@@ -45,28 +47,10 @@ public class PersonController {
             .orElse(ResponseEntity.notFound().build());
     }
 
-    @GetMapping("/{id}/addresses")
-    public List<Address> getAddressesByPerson(@PathVariable Long id) {
-        return addressService.listAddressesByPerson(id);
-    }
-
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
     public Person createPerson(@RequestBody @Valid Person person) {
         return personService.create(person);
-    }
-
-    @PostMapping("/{id}/addresses")
-    @ResponseStatus(code = HttpStatus.CREATED)
-    public ResponseEntity<Address> addAddressToPerson(@PathVariable Long id, @Valid @RequestBody Address address) {
-        Person person = personService.findById(id).orElse(null);
-        if (person == null) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        } 
-        address.setPerson(person);
-        Address savedAddress = addressService.create(address);
-
-        return ResponseEntity.status(HttpStatus.CREATED).body(savedAddress);
     }
     
     @PutMapping("/{id}")
@@ -84,4 +68,28 @@ public class PersonController {
         }
         return ResponseEntity.notFound().build();
     }
+
+    @PostMapping("/{id}/addresses")
+    @ResponseStatus(code = HttpStatus.CREATED)
+    public ResponseEntity<Address> addAddressToPerson(@PathVariable Long id, @Valid @RequestBody Address address) {
+        Person person = personService.findById(id).orElse(null);
+        if (person == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } 
+        address.setPerson(person);
+        Address savedAddress = addressService.create(address);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedAddress);
+    }
+
+    @GetMapping("/{id}/addresses")
+    public List<Address> getAddressesByPerson(@PathVariable Long id) {
+        return addressService.listAddressesByPerson(id);
+    }
+
+    @GetMapping("/{id}/addresses/principal")
+    public ResponseEntity<Address> getPrincipalAddress(@PathVariable Long id) {
+        return new ResponseEntity<>(personService.getPrincipalAddress(id), HttpStatus.OK);
+    }
+
 }

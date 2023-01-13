@@ -9,15 +9,15 @@ import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.Past;
 
 import java.time.LocalDate;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.hibernate.validator.constraints.Length;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
 @Entity
 public class Person {
     @Id
@@ -33,7 +33,11 @@ public class Person {
     @Column(columnDefinition = "DATE")
     private LocalDate birthDate;
 
-    @JsonIgnore
     @OneToMany(mappedBy = "person")
-    private Set<Address> adresses;
+    private List<Address> addresses = new ArrayList<>();
+
+    public Person(String name, LocalDate birthDate) {
+        this.name = name;
+        this.birthDate = birthDate;
+    }
 }

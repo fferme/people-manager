@@ -31,6 +31,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class PersonController {
     private final PersonService personService;
+    private final AddressService addressService;
 
     @GetMapping
     public @ResponseBody List<Person> listAll() {
@@ -44,15 +45,28 @@ public class PersonController {
             .orElse(ResponseEntity.notFound().build());
     }
 
+    @GetMapping("/{id}/addresses")
+    public List<Address> getAddressesByPerson(@PathVariable Long id) {
+        return addressService.listAddressesByPerson(id);
+    }
+
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
-    public Person create(@RequestBody @Valid Person person) {
+    public Person createPerson(@RequestBody @Valid Person person) {
         return personService.create(person);
     }
 
-    @GetMapping("/{id}/addresses")
-    public ResponseEntity<Address> getPersonAddresses(@PathVariable @NotNull Long id) {
-        return null;
+    @PostMapping("/{id}/addresses")
+    @ResponseStatus(code = HttpStatus.CREATED)
+    public ResponseEntity<Address> addAddressToPerson(@PathVariable Long id, @Valid @RequestBody Address address) {
+        Person person = personService.findById(id).orElse(null);
+        if (person == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } 
+        address.setPerson(person);
+        Address savedAddress = addressService.create(address);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedAddress);
     }
     
     @PutMapping("/{id}")

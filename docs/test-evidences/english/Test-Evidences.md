@@ -35,8 +35,6 @@
 
 ---
 
-
-
 ## Reading person's data
 
 - Using http request GET `(/api/person/{id})` to get person's data
@@ -48,3 +46,28 @@
 - Using http request GET `(/api/person)` to get all people's data
 
   ![1673485181025](image/Test-Evidences/1673485181025.png)
+
+## Creating an address for a person
+
+- Using http request GET `(/api/person/{id})` to get person's data
+
+  ![1673575534728](image/Test-Evidences/1673575534728.png)
+- Using http request POST `(/api/person/{id}/addresses)` to create an address and associate with a person
+
+  ![1673577393755](image/Test-Evidences/1673577393755.png)
+- 
+- 
+- 
+- 
+- 
+- Using http request GET `(/api/person/{id})` to get person's data with the added address
+
+  ![1673577453795](image/Test-Evidences/1673577453795.png)
+
+  ## Retrieving all person's addresses
+- Using http request GET `(/api/person/{id})` to get person's data with all the addresses
+
+  ![1673581153525](image/Test-Evidences/1673581153525.png)
+- Using http request GET `(/api/person/{id}/addresses)` to get all addresses for this person
+
+  ![1673582093454](image/Test-Evidences/1673582093454.png)

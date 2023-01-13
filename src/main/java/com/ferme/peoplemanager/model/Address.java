@@ -13,9 +13,15 @@ import jakarta.validation.constraints.Positive;
 
 import org.hibernate.validator.constraints.Length;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class Address {
     @Id
@@ -33,18 +39,18 @@ public class Address {
     private String zipCode;
 
     @Positive
-    @Length(max = 10)
-    @Column(length = 10, nullable = false)
-    private Long number;
+    @Column(nullable = false)
+    private Integer number;
 
-    @Length(max = 10)
-    @Column(length = 10, nullable = false)
+    @Length(max = 25)
+    @Column(length = 25, nullable = false)
     private String city;
 
     @NotNull
     private Boolean principal;
-
+    
+    @JsonIgnore
     @ManyToOne
-    @JoinColumn(name = "person_id", nullable = false)
+    @JoinColumn(name = "person_id")
     private Person person;
 }

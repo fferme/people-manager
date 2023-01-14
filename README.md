@@ -46,14 +46,6 @@ Todos os testes integrados estão localizados em: [Evidencias-de-teste](docs/tes
 * Spring Data JPA
 * Banco de dados H2
 
-## Como executar o projeto
-
-1. Clone o repositório: git clone [https://github.com/fferme/people-manager.git](https://github.com/fferme/people-manager.git)
-2. Vá para a pasta do projeto: cd people-manager
-3. Execute o comando mvn spring-boot:run
-4. Acesse [http://localhost:8080/h2-console](http://localhost:8080/h2-console) no seu navegador para acessar dados mostrados nas tabelas
-5. Utilize o Imsonia ou qualquer programa REST para realizar as requisições HTTP
-
 ## Testes Unitários
 
 Os testes unitários podem ser executados usando o comando mvn test na raiz do projeto.

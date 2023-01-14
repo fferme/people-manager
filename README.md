@@ -1,10 +1,28 @@
 # Gerenciador de Pessoas
 
-Gerenciador de pessoas é uma aplicação de gerenciamento de pessoas desenvolvida usando Spring Boot. Ele permite a criação, edição, consulta e listagem de pessoas, bem como a criação, listagem e gerenciamento de endereços dessas pessoas.
+Gerenciador de pessoas é uma aplicação de gerenciamento de pessoas desenvolvida usando Spring Boot. Ele permite a criação, edição, consulta e listagem de pessoas, bem como a criação, listagem e gerenciamento de endereços dessas pessoas. A API está sendo hospedada na AWS. 
 
 ## Notas
 
 * A anotação `@Lombok` está sendo usada para gerar automaticamente `getters, setters, construtores (exceto class Person), hash code e equals`.
+
+## Testando a API
+
+As rotas da API podem ser testadas usando ferramentas como o Postman. As rotas disponíveis incluem:
+
+* GET `http://people-manager.sa-east-1.elasticbeanstalk.com/api/person`: lista todas as pessoas registradas ✔️
+* GET `http://people-manager.sa-east-1.elasticbeanstalk.com/api/person/{id}`: consulta uma pessoa pelo seu ID ✔️
+* POST `http://people-manager.sa-east-1.elasticbeanstalk.com/api/person`: cria uma nova pessoa ✔️
+* PUT `http://people-manager.sa-east-1.elasticbeanstalk.com/api/person/{id}`: atualiza uma pessoa existente ✔️
+* DELETE `http://people-manager.sa-east-1.elasticbeanstalk.com/api/person/{id}`: remove uma pessoa existente ✔️
+* GET `http://people-manager.sa-east-1.elasticbeanstalk.com/api/person/{id}/addresses`: lista todos os endereços de uma pessoa ✔️
+* GET `http://people-manager.sa-east-1.elasticbeanstalk.com/api/person/{id}/addresses/principal`: recupera o endereço principal de uma pessoa ✔️
+* POST `http://people-manager.sa-east-1.elasticbeanstalk.com/api/person/{id}/addresses`: cria um novo endereço para uma pessoa ✔️
+* PUT `http://people-manager.sa-east-1.elasticbeanstalk.com/api/person/{id}/addresses/{addressId}`: atualiza um endereço existente de uma pessoa
+* DELETE `http://people-manager.sa-east-1.elasticbeanstalk.com/api/person/{id}/addresses/{addressId}`: remove um endereço existente de uma pessoa
+* PUT `http://people-manager.sa-east-1.elasticbeanstalk.com/api/person/{id}/addresses/{addressId}/main`: define um endereço como o endereço principal de uma pessoa
+
+PS: Rotas sem ✔️ ainda não foram implementadas
 
 # Testes
 
@@ -23,6 +41,7 @@ Todos os testes integrados estão localizados em: [Evidencias-de-teste](docs/tes
 ## Tecnologias
 
 * Spring Boot
+* Elastic Beanstick - AWS
 * Java Bean Validation
 * Spring Data JPA
 * Banco de dados H2
@@ -34,24 +53,6 @@ Todos os testes integrados estão localizados em: [Evidencias-de-teste](docs/tes
 3. Execute o comando mvn spring-boot:run
 4. Acesse [http://localhost:8080/h2-console](http://localhost:8080/h2-console) no seu navegador para acessar dados mostrados nas tabelas
 5. Utilize o Imsonia ou qualquer programa REST para realizar as requisições HTTP
-
-## Testando a API
-
-As rotas da API podem ser testadas usando ferramentas como o Postman. As rotas disponíveis incluem:
-
-* GET `api/person`: lista todas as pessoas registradas ✔️
-* GET `api/person/{id}`: consulta uma pessoa pelo seu ID ✔️
-* POST `api/person`: cria uma nova pessoa ✔️
-* PUT `api/person/{id}`: atualiza uma pessoa existente ✔️
-* DELETE `api/person/{id}`: remove uma pessoa existente ✔️
-* GET `api/person/{id}/addresses`: lista todos os endereços de uma pessoa ✔️
-* GET `api/person/{id}/addresses/principal`: recupera o endereço principal de uma pessoa ✔️
-* POST `api/person/{id}/addresses`: cria um novo endereço para uma pessoa ✔️
-* PUT `api/person/{id}/addresses/{addressId}`: atualiza um endereço existente de uma pessoa
-* DELETE `api/person/{id}/addresses/{addressId}`: remove um endereço existente de uma pessoa
-* PUT `api/person/{id}/addresses/{addressId}/main`: define um endereço como o endereço principal de uma pessoa
-
-PS: Rotas sem ✔️ ainda não foram implementadas
 
 ## Testes Unitários
 

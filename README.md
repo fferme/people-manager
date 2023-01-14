@@ -17,6 +17,7 @@ Todos os testes integrados estão localizados em: [Evidencias-de-teste](docs/tes
 * Listar pessoas
 * Criar endereço para pessoa
 * Listar endereços de pessoa
+* Recuperar endereço principal de pessoa
 * Ser capaz de especificar qual é o endereço principal da pessoa
 
 ## Tecnologias
@@ -38,16 +39,19 @@ Todos os testes integrados estão localizados em: [Evidencias-de-teste](docs/tes
 
 As rotas da API podem ser testadas usando ferramentas como o Postman. As rotas disponíveis incluem:
 
-* GET `api/person`: lista todas as pessoas registradas
-* GET `api/person/{id}`: consulta uma pessoa pelo seu ID
-* POST `api/person`: cria uma nova pessoa
-* PUT `api/person/{id}`: atualiza uma pessoa existente
-* DELETE `api/person/{id}`: remove uma pessoa existente
-* GET `api/person/{id}/addresses`: lista todos os endereços de uma pessoa
-* POST `api/person/{id}/addresses`: cria um novo endereço para uma pessoa
+* GET `api/person`: lista todas as pessoas registradas ✔️
+* GET `api/person/{id}`: consulta uma pessoa pelo seu ID ✔️
+* POST `api/person`: cria uma nova pessoa ✔️
+* PUT `api/person/{id}`: atualiza uma pessoa existente ✔️
+* DELETE `api/person/{id}`: remove uma pessoa existente ✔️
+* GET `api/person/{id}/addresses`: lista todos os endereços de uma pessoa ✔️
+* GET `api/person/{id}/addresses/principal`: recupera o endereço principal de uma pessoa ✔️
+* POST `api/person/{id}/addresses`: cria um novo endereço para uma pessoa ✔️
 * PUT `api/person/{id}/addresses/{addressId}`: atualiza um endereço existente de uma pessoa
 * DELETE `api/person/{id}/addresses/{addressId}`: remove um endereço existente de uma pessoa
 * PUT `api/person/{id}/addresses/{addressId}/main`: define um endereço como o endereço principal de uma pessoa
+
+PS: Rotas sem ✔️ ainda não foram implementadas
 
 ## Testes Unitários
 

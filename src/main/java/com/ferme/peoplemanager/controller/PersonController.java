@@ -67,6 +67,7 @@ public class PersonController {
         return ResponseEntity.notFound().build();
     }
 
+    // Cria um endereço para uma pessoa
     @PostMapping("/{id}/addresses")
     @ResponseStatus(code = HttpStatus.CREATED)
     public ResponseEntity<Address> addAddressToPerson(@PathVariable Long id, @Valid @RequestBody Address address) {
@@ -79,12 +80,14 @@ public class PersonController {
 
         return ResponseEntity.status(HttpStatus.CREATED).body(savedAddress);
     }
-
+    
+    // Recupera todos os endereços da pessoa
     @GetMapping("/{id}/addresses")
     public List<Address> getAddressesByPerson(@PathVariable Long id) {
         return addressService.listAddressesByPerson(id);
     }
-
+    
+    // Recupera o endereço princial da pessoa
     @GetMapping("/{id}/addresses/principal")
     public ResponseEntity<Address> getPrincipalAddress(@PathVariable Long id) {
         return new ResponseEntity<>(personService.getPrincipalAddress(id), HttpStatus.OK);
